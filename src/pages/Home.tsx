@@ -23,11 +23,11 @@ const Home: React.FC = () => {
     return (
         <Container maxWidth="sm">
             <List sx={{ marginTop: "2rem" }}>
-                <Form handleAddTask={handleAddTask} />
+                <Form handleAddTask={() => handleAddTask} />
 
-                {taskList.map((tasks) => (
+                {taskList.map((task) => (
                     <Box sx={{ marginY: ".5rem" }}>
-                        <TodoListItem />
+                        <TodoListItem task={task} />
                     </Box>
                 ))}
             </List>

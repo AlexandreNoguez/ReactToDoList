@@ -8,7 +8,7 @@ import { DeleteForeverRounded } from '@mui/icons-material';
 import { ListItemText, Paper } from '@mui/material';
 
 
-const TodoListItem: React.FC = () => {
+const TodoListItem: React.FC = ({ task }) => {
 
 
     return (
@@ -30,7 +30,7 @@ const TodoListItem: React.FC = () => {
                         />
                     </ListItemIcon>
                 </ListItemButton>
-                <ListItemText primary={`Tarefa1`} />
+                <ListItemText primary={task} />
             </ListItem>
         </Paper>
     );
