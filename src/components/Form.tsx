@@ -13,6 +13,8 @@ const Form = ({ handleAddTask }: IInputProps) => {
         const taskObject = { task: task, id: idTask }
         setIdTask(idTask + 1)
         handleAddTask(taskObject)
+        setTask('')
+        // document.getElementById('filled-basic').value = ''
     }
     return (
         <Paper sx={{ padding: "1rem" }}>
@@ -25,7 +27,9 @@ const Form = ({ handleAddTask }: IInputProps) => {
                     onChange={(e) => setTask(e.target.value)}
                     fullWidth
                 />
-                <Button variant='contained' onClick={() => handleAddNewTask(task)}
+                <Button
+                    variant='contained'
+                    onClick={() => handleAddNewTask(task)}
                 >
                     Adicionar
                 </Button>

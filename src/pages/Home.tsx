@@ -13,21 +13,34 @@ interface IHomeProps {
 
 const Home: React.FC = () => {
 
-    const [taskList, setTaskList] = useState<IHomeProps | null[]>([])
+    const [taskList, setTaskList] = useState([])
 
-    const handleAddTask = (addTask: string) => {
+    const handleAddTask = (addTask) => {
         setTaskList([...taskList, addTask])
     }
 
+    const handleDeleteTask = (id: number) => {
+        console.log(id);
+        const filtered = taskList.filter((taskItem) => taskItem.id !== id);
+        setTaskList(filtered);
+    }
 
+    const handleEditTask = (id: Number, editTask: string) => {
+        console.log(id);
+        console.log(editTask);
+        console.log(taskList);
+
+    }
     return (
         <Container maxWidth="sm">
             <List sx={{ marginTop: "2rem" }}>
-                <Form handleAddTask={() => handleAddTask} />
+                <Form handleAddTask={handleAddTask} />
 
-                {taskList.map((task) => (
-                    <Box sx={{ marginY: ".5rem" }}>
-                        <TodoListItem task={task} />
+                {taskList?.map((task) => (
+
+                    <Box key={task.id} sx={{ marginY: ".5rem" }}>
+
+                        <TodoListItem task={task} handleDeleteTask={handleDeleteTask} handleEditTask={handleEditTask} />
                     </Box>
                 ))}
             </List>
